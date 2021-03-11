@@ -1,25 +1,15 @@
-import { useState, useEffect } from 'react';
 import TableHeader from './TableHeader';
 import Row from './Row';
-import { reservoireAPI } from '../../API';
+import { useSelector } from 'react-redux';
 
 const Table = () => {
-  const [reservoirs, setReservoirs] = useState([]);
-
-  useEffect(() => {
-    reservoireAPI
-      .list()
-      .then(reservoirs => {
-        console.log(reservoirs);
-        setReservoirs(reservoirs);
-      });
-  }, []);
+  const { reservoires } = useSelector(state => state.reservoire)
 
   return (
     <table className="table table-striped table-hover">
       <TableHeader />
       <tbody>
-        { reservoirs.map(reservoir => {
+        { reservoires.map(reservoir => {
           if (reservoir.showed){
             return (<Row key={reservoir.id} reservoir={reservoir} />)
           }}

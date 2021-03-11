@@ -3,20 +3,17 @@ import { reservoireAPI } from '../API';
 const SET_RESERVOIRES = 'SET_RESERVOIRES';
 
 const initialState = {
-  id: null,
-  name: '',
-  raion: '',
-  isAdmin: false,
-  isLoading: false,
+  reservoires: [],
+  currentReservoire: {},
 };
 
-const authReducer = (state = initialState, action) => {
+const reservoireReducer = (state = initialState, action) => {
   let newState = {...state};
   switch(action.type) {
     case SET_RESERVOIRES:
       newState = {
         ...newState,
-        ...action.payload
+        reservoires: [...action.payload],
       };
       break;
     default: break;
@@ -29,9 +26,10 @@ const setReservoiresAC = (reservoires) => ({
   payload: reservoires,
 });
 
-export const setReservoires = async () => async (dispatch) => {
-  const reservoires = await reservoireAPI.list();
-  dispatch(setReservoiresAC(reservoires));
+export const setReservoires = () => (dispatch) => {
+  reservoireAPI.list().then(reservoires => {
+    dispatch(setReservoiresAC(reservoires));
+  });
 };
 
-export default authReducer;
+export default reservoireReducer;
