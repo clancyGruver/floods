@@ -10,7 +10,7 @@ const App = () => (
   <Router>
     <Switch>
       <Route path="/" exact>  <Main /> </Route>
-      <Route path="/reservoir/:id" exact>  <Card /> </Route>
+      <Route path="/reservoire/:id" exact>  <Card /> </Route>
     </Switch>
   </Router>
 );

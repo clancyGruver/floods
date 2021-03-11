@@ -9,9 +9,9 @@ const Table = () => {
     <table className="table table-striped table-hover">
       <TableHeader />
       <tbody>
-        { reservoires.map(reservoir => {
-          if (reservoir.showed){
-            return (<Row key={reservoir.id} reservoir={reservoir} />)
+        { reservoires.map(reservoire => {
+          if (reservoire.showed){
+            return (<Row key={reservoire.id} reservoire={reservoire} />)
           }}
         ) }
       </tbody>

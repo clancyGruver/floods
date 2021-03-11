@@ -15,9 +15,7 @@ const Card = () => {
   const history = useHistory();
 
   const [loading, setLoading] = useState(true);
-  const [reservoire, setReservoire] = useState({
-    name: '',
-  });
+  const [reservoire, setReservoire] = useState({});
 
   const reserv = useSelector(
     state => state.reservoire.reservoires.find(
@@ -77,15 +75,19 @@ const Card = () => {
               </div>
               <hr/>
               <div className="row">
-                <div className="col"><strong>Таблица завиисимостей: </strong>
-                  <span className="text-danger">Нет</span>
+                <div className="col">
+                  <strong>Таблица завиисимостей:
+                    <span className="text-danger"> Нет</span>
+                  </strong>
                 </div>
-                <div className="col"><strong>Заполняется ПСО: </strong>
+                <div className="col">
+                  <strong>Заполняется ПСО: 
                   {
                     reservoire.is_ofps_fill
-                    ? <span className="text-primary">Да</span>
-                    : <span className="text-danger">Нет</span>
+                    ? <span className="text-primary"> Да</span>
+                    : <span className="text-danger"> Нет</span>
                   }
+                  </strong>
                 </div>
               </div>
               <div className="row">
