@@ -16,8 +16,21 @@ const columnNames = [
   'Изменить карточку',
 ];
 
+const thStyle = {
+  fontSize:'0.8rem',
+};
+
 const Header = () => {
-  const cols = columnNames.map((name, index) => (<th scope="col" key={index}>{name}</th>));
+  const cols = columnNames.map((name, index) => (
+    <th
+      style={thStyle}
+      scope="col"
+      key={index}
+      className="text-center"
+    >
+      {name}
+    </th>
+  ));
   return (
     <thead>
       <tr>

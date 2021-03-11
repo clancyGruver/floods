@@ -1,28 +1,18 @@
-import TopAlert from './components/topAlert';
-import Menu from './components/Menu/Menu';
-import MainTable from './components/MainTable';
-import Header from './components/Header';
-import { setUser } from './store/auth';
-import { connect } from 'react-redux';
+import Main from './pages/Main';
+import Card from './pages/Card';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 
-function App() {
-  setUser();
-  return (
-    <div className="container-fluid">
-      <Header text="Водохранилища ПСО ФПС" />
-      <TopAlert />
-      <Menu />
-      <MainTable />
-    </div>
-  );
-}
+const App = () => (
+  <Router>
+    <Switch>
+      <Route path="/" exact>  <Main /> </Route>
+      <Route path="/reservoir/:id" exact>  <Card /> </Route>
+    </Switch>
+  </Router>
+);
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-})
-
-const mapDispatchToProps = {
-  setUser,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
