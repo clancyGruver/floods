@@ -18,8 +18,17 @@ const Row = ({reservoir}) => (
     <td></td>
     <td>{reservoir.flood_level}</td>
     <td></td>
-    <td><Link to={`/reservoir/${reservoir.id}`}><FontAwesomeIcon icon={['fas', 'clipboard']} /></Link></td>
-    <td></td>
+    <td className="d-flex ">
+      <Link to={`/reservoir/${reservoir.id}`} className="btn btn-warning">
+        <FontAwesomeIcon icon={['fas', 'clipboard']} fixedWidth  />
+      </Link>
+      <Link to={`/reservoirView/${reservoir.id}`} className="btn btn-warning">
+        <FontAwesomeIcon icon={['fas', 'plus']} fixedWidth  />
+      </Link>
+      <Link to={`/reservoir/edit/${reservoir.id}`} className="btn btn-warning">
+        <FontAwesomeIcon icon={['fas', 'pen']} fixedWidth  />
+      </Link>
+    </td>
   </tr>
 );
 

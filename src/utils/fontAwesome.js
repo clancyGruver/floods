@@ -2,10 +2,11 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 // import your icons
-import { faGlobeEurope, faPlus, faClipboard } from '@fortawesome/free-solid-svg-icons';
+import { faGlobeEurope, faPlus, faClipboard, faPen } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
   faGlobeEurope,
   faPlus,
-  faClipboard
+  faClipboard,
+  faPen,
 );

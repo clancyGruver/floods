@@ -89,6 +89,9 @@ const Card = () => {
                 </div>
               </div>
               <div className="row">
+                  Place for fusionChart
+              </div>
+              <div className="row">
                   Place for photos
               </div>
             </div>
