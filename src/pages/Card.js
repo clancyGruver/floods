@@ -4,7 +4,11 @@ import { useParams } from 'react-router-dom';
 import Prelaoder from '../components/Preloader/Preloader';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import phoneNumberFormatter from 'phone-number-formats';
 import '../styles/Card.css';
+
+phoneNumberFormatter.addType('cell10', '8 (YYY) XXX-XX-XX');
+phoneNumberFormatter.addType('cell11', '8 (YYY) XXX-XX-XX');
 
 const Card = () => {
   const { id } = useParams();
@@ -29,6 +33,15 @@ const Card = () => {
   const handleBack = () => {
     history.goBack();
   }
+
+  const telephoneFormat = (phone) => {
+    phone = '' + phone;
+    const formatter = {
+      10: () => (new phoneNumberFormatter(phone).format({type: 'cell10'}).toString()),
+      11: () => (new phoneNumberFormatter(phone).format({type: 'cell11'}).toString()),
+    }
+    return formatter[phone.length]();
+  };
 
   const filledCard = () => {
     return (
@@ -59,8 +72,8 @@ const Card = () => {
               </div>
               <hr/>
               <div className="row">
-                <div className="col"><strong>Инженер:</strong> <br/>{reservoire.tel_egineer}</div>
-                <div className="col"><strong>Оператор:</strong><br/>{reservoire.tel_operator}</div>
+                <div className="col"><strong>Инженер:</strong> <br/>{telephoneFormat(reservoire.tel_egineer)}</div>
+                <div className="col"><strong>Оператор:</strong><br/>{telephoneFormat(reservoire.tel_operator)}</div>
               </div>
               <hr/>
               <div className="row">
